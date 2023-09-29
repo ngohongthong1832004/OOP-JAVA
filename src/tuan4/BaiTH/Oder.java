@@ -8,12 +8,10 @@ public class Oder {
 	private OderDetail lineItems[]; 
 	private int count;
 	
-	public Oder(int oderID, LocalDate oderDate, OderDetail[] lineItems, int count) {
-		super();
+	public Oder(int oderID, LocalDate oderDate) {
 		this.oderID = oderID;
 		this.oderDate = oderDate;
-		this.lineItems = lineItems;
-		this.count = count;
+		this.lineItems = new OderDetail[10];
 	}
 
 
@@ -40,39 +38,13 @@ public class Oder {
 		this.oderDate = oderDate;
 	}
 
-
-
-	public OderDetail[] getLineItems() {
-		return lineItems;
-	}
-
-
-
-	public void setLineItems(OderDetail[] lineItems) {
-		this.lineItems = lineItems;
-	}
-
-
-
-	public int getCount() {
-		return count;
-	}
-
-
-
-	public void setCount(int count) {
-		this.count = count;
-	}
-
-
-
 	public void addLineItem(Product a, int b) {
 		if(count < lineItems.length) {
 			lineItems[count++] = new OderDetail(b, a);
 		}
 	}
 	
-	private double calcTotalCharge() {
+	public double calcTotalCharge() {
 		double tongtien = 0;
 		for (int i = 0 ; i< count; i++) {
 			tongtien += lineItems[i].calcTotalPrice();
